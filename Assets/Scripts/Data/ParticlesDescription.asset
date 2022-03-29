@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5d10a65ea4a1f42b1374d67f8e0efa, type: 3}
+  m_Name: ParticlesDescription
+  m_EditorClassIdentifier: 
+  _listOfParticles:
+  - Name: 0
+    Spin: 1/2
+    BeamPrefab: {fileID: 6524102898664054363, guid: e2b5e29bdd6748c44bd9b647e53cb9b0,
+      type: 3}
+    EmittedParticlePrefab: {fileID: 708132628373276244, guid: df1ef27dc2cdf6d499ca1fd48e976be6,
+      type: 3}
+  - Name: 1
+    Spin: 1/2
+    BeamPrefab: {fileID: 4444669238809060294, guid: 35f755a12be1704458deff7b96ee9ad1,
+      type: 3}
+    EmittedParticlePrefab: {fileID: 2139582849829608118, guid: 08644eaab58367546b5f186632c4f2f1,
+      type: 3}
+  - Name: 2
+    Spin: 1
+    BeamPrefab: {fileID: 7004632388673686569, guid: f3c0b92da7be256428afdfdfbba0b33e,
+      type: 3}
+    EmittedParticlePrefab: {fileID: 1914068005078244452, guid: 5de3ae9c48d686a4ca68c86e948f29cc,
+      type: 3}
