@@ -42,4 +42,10 @@ MonoBehaviour:
       BeamTwo: 1
     Channels:
     - ProbabilityOfChannel: 1
-      RadiatedParticles: 0200000001000000
+      RadiatedParticles: 02000000010000000000000002000000010000000000000002000000010000000000000001000000
+  - Reagents:
+      BeamOne: 2
+      BeamTwo: 0
+    Channels:
+    - ProbabilityOfChannel: 1
+      RadiatedParticles: 0200000001000000000000000200000001000000

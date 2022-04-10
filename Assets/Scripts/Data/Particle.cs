@@ -12,6 +12,7 @@ public class Particle
     [Header("InGame Fields")]
     public GameObject BeamPrefab;
     public GameObject EmittedParticlePrefab;
+    public Sprite Icon;
 }
 
 public enum PARTICLENAME

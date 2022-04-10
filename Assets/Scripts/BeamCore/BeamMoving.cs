@@ -19,7 +19,7 @@ public class BeamMoving : MonoBehaviour
     private void Start()
     {
         _moveValue = Mathf.Atan(transform.localPosition.x / transform.localPosition.y);
-        // подписываемся на события, объвленное в другом классе
+
         //подписываемя на событие запуска
         BeamLauncher.BeamLaunchEvent += LaunchBeam;
         //подписываемся на событие столкновения

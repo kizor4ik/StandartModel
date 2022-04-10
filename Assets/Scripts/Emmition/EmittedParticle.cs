@@ -57,4 +57,9 @@ public class EmittedParticle : MonoBehaviour
         Debug.Log("particle:" + this.transform.name + " grabed");
         this.gameObject.SetActive(false);
     }
+
+    private void OnDestroy()
+    {
+        BeamLauncher.BeamCollideEvent -= Emmit;
+    }
 }

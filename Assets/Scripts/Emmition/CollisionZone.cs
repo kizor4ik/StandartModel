@@ -6,7 +6,6 @@ public class CollisionZone : MonoBehaviour
 {
     private bool _isCollided=false;
 
-    // Start is called before the first frame update
     void Start()
     {
         //подписываемся на событие столкновения

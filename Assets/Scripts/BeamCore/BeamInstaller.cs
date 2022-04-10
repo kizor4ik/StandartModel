@@ -13,13 +13,17 @@ public class BeamInstaller : MonoBehaviour
     public Dictionary<PARTICLENAME, Particle> DictOfParticles = new Dictionary<PARTICLENAME, Particle>();
     public Dictionary<string, ScatteringProccess> DictOfProccesse = new Dictionary<string, ScatteringProccess>();
 
-    [SerializeField] private Transform LeftBeamParent;
-    [SerializeField] private Transform RightBeamParent;
-    [SerializeField] private Transform EmittedParticlesParent;
-    
+    [SerializeField] private Transform _leftBeamParent;
+    [SerializeField] private Transform _rightBeamParent;
+    [SerializeField] private Transform _emittedParticlesParent;
+
+    // Булики нужны, чтобы понимать какая из пучков меняется через UI
+    private bool _isLeftInstalling = false;
+    private bool _isRightInstalling = false;
 
     private void Awake()
     {
+        // Собираем необходимые словари
         foreach (Particle particle in _particleDescription.ListOfParticles)
         {
             DictOfParticles.Add(particle.Name, particle);
@@ -30,26 +34,23 @@ public class BeamInstaller : MonoBehaviour
             DictOfProccesse.Add(proccess.Reagents.BeamOne.ToString() + proccess.Reagents.BeamTwo.ToString(), proccess);
         }
 
+        InstallParticleConfiguration();
 
-        InstallEmittedParticles();
-
-        InstallLeftBeam();
-
-        InstallRightBeam();
-
+        // Подписываемся на изменения состава пучка
+        ParticlePoolButton.ChooseParticleEvent += SetBeamParticle;
     }
 
     private void InstallRightBeam()
     {
         GameObject RightBeam = Instantiate(DictOfParticles[_rightBeamParticle].BeamPrefab, Vector3.zero, Quaternion.identity);
-        RightBeam.transform.SetParent(RightBeamParent);
+        RightBeam.transform.SetParent(_rightBeamParent);
         RightBeam.transform.localPosition = Vector3.zero;
     }
 
     private void InstallLeftBeam()
     {
         GameObject LeftBeam = Instantiate(DictOfParticles[_leftBeamParticle].BeamPrefab, Vector3.zero, Quaternion.identity);
-        LeftBeam.transform.SetParent(LeftBeamParent);
+        LeftBeam.transform.SetParent(_leftBeamParent);
         LeftBeam.transform.localPosition = Vector3.zero;
     }
 
@@ -65,11 +66,59 @@ public class BeamInstaller : MonoBehaviour
         foreach (PARTICLENAME emittedParticleName in DictOfProccesse[key].Channels[channelIndex].RadiatedParticles)
         {
             GameObject emittedParticle = Instantiate(DictOfParticles[emittedParticleName].EmittedParticlePrefab, Vector3.zero, Quaternion.identity);
-            emittedParticle.transform.SetParent(EmittedParticlesParent);
+            emittedParticle.transform.SetParent(_emittedParticlesParent);
             emittedParticle.transform.localPosition = Vector3.zero;
         }
     }
-   
 
- 
+    private void ClearPreviosInstallation()
+    {
+        foreach (Transform child in _leftBeamParent)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in _rightBeamParent)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in _emittedParticlesParent)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    private void InstallParticleConfiguration()
+    {
+        ClearPreviosInstallation();
+        InstallEmittedParticles();
+        InstallLeftBeam();
+        InstallRightBeam();
+    }
+
+    public void SetBeamParticle(PARTICLENAME particleName)
+    {
+        if (_isLeftInstalling)
+        {
+            _leftBeamParticle = particleName;
+        }
+        if (_isRightInstalling)
+        {
+            _rightBeamParticle = particleName;
+        }
+        InstallLeftBeam();
+        InstallParticleConfiguration();
+    }
+
+    public void MarkLeftBeam()
+    {
+        _isLeftInstalling = true;
+        _isRightInstalling = false;
+    }
+    public void MarkRightBeam()
+    {
+        _isLeftInstalling = false;
+        _isRightInstalling = true;
+    }
+
+
 }
