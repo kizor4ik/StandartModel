@@ -6543,7 +6543,7 @@ GameObject:
   - component: {fileID: 1957627662}
   - component: {fileID: 1957627663}
   m_Layer: 0
-  m_Name: StatisticCollector
+  m_Name: Statistic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6572,7 +6572,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1957627661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f5f59abc17f3d548b9c68d463f7a38e, type: 3}
+  m_Script: {fileID: 11500000, guid: b7d7097f6175dd446af8a3c0b7bb1e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _particlesDescription: {fileID: 11400000, guid: bc3b2171dd8a3f34fb21f0451016e32c,

@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BayatGames.SaveGameFree;
 
 public class BeamInstaller : MonoBehaviour
 {
+    private const string INITIALBEAMS_KEY = "Initital Beams";
+    private InitialBeams _initialBeams = new InitialBeams();
     [SerializeField] private PARTICLENAME _leftBeamParticle;
     [SerializeField] private PARTICLENAME _rightBeamParticle;
 
@@ -23,6 +26,7 @@ public class BeamInstaller : MonoBehaviour
 
     private void Awake()
     {
+        
         // Собираем необходимые словари
         foreach (Particle particle in _particleDescription.ListOfParticles)
         {
@@ -34,6 +38,7 @@ public class BeamInstaller : MonoBehaviour
             DictOfProccesse.Add(proccess.Reagents.BeamOne.ToString() + proccess.Reagents.BeamTwo.ToString(), proccess);
         }
 
+        Load();
         InstallParticleConfiguration();
 
         // Подписываемся на изменения состава пучка
@@ -93,6 +98,7 @@ public class BeamInstaller : MonoBehaviour
         InstallEmittedParticles();
         InstallLeftBeam();
         InstallRightBeam();
+        Save();
     }
 
     public void SetBeamParticle(PARTICLENAME particleName)
@@ -120,5 +126,19 @@ public class BeamInstaller : MonoBehaviour
         _isRightInstalling = true;
     }
 
-
+    private void Save()
+    {
+        _initialBeams.LeftBeamParticle = _leftBeamParticle;
+        _initialBeams.RightBeamParticle = _rightBeamParticle;
+        SaveGame.Save<InitialBeams>(INITIALBEAMS_KEY, _initialBeams);
+    }
+    private void Load()
+    {
+        if (SaveGame.Exists(INITIALBEAMS_KEY))
+        {
+            InitialBeams loadedData = SaveGame.Load<InitialBeams>(INITIALBEAMS_KEY, new InitialBeams());
+            _leftBeamParticle = loadedData.LeftBeamParticle;
+            _rightBeamParticle = loadedData.RightBeamParticle;
+        }
+    }
 }

@@ -1,47 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BayatGames.SaveGameFree;
 
-public class StatisticCollector : MonoBehaviour
+
+public class StatisticCollector 
 {
-    [SerializeField] private ParticlesDescription _particlesDescription;
+    public ParticleDetectionStatistic Stats = new ParticleDetectionStatistic();
+    private string _dataKey;
 
-    public Dictionary<PARTICLENAME, int> RegisteredParticles = new Dictionary<PARTICLENAME, int>();
-
-    private void Awake()
+    public StatisticCollector(ParticlesDescription particlesDescription, string dataKey)
     {
-        // Собираем словарь. Ключ - имя частицы, значение - количество задетектрированных событий.
-        foreach (Particle particle in _particlesDescription.ListOfParticles)
+        foreach (Particle particle in particlesDescription.ListOfParticles)
         {
-            RegisteredParticles.Add(particle.Name, 0);
+            Stats.RegisteredParticles.Add(particle.Name, 0);
+        }
+        // Подписка на подбор частицы
+        EmittedParticle.GrabParticleEvent += AddParticleDetection;
+        _dataKey = dataKey;
+        Load();
+    }
+
+    private void AddParticleDetection(PARTICLENAME name)
+    {
+        Stats.RegisteredParticles[name]++;
+        Debug.Log("Particle " + name + " grabbed! Total amount " + Stats.RegisteredParticles[name].ToString());
+        Save();
+    }
+
+    void Save()
+    {
+        SaveGame.Save<ParticleDetectionStatistic>(_dataKey, Stats);
+    }
+    public void Load()
+    {
+        if (SaveGame.Exists(_dataKey))
+        {
+            ParticleDetectionStatistic loadedData = SaveGame.Load<ParticleDetectionStatistic>(_dataKey, new ParticleDetectionStatistic());
+            Stats = loadedData;
         }
     }
-
-    private void Start()
-    {
-        EmittedParticle.GrabParticleEvent += AddParticleDetection;
-    }
-
-    public void AddParticleDetection(PARTICLENAME name)
-    {
-        RegisteredParticles[name]++;
-    }
-
-    public void GetParticlesStatistic(PARTICLENAME name)
-    {
-        Debug.Log(RegisteredParticles[name]);
-    }
-
-
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.X))
-    //    {
-    //        foreach (Particle particle in _particlesDescription.ListOfParticles)
-    //        {
-    //            Debug.Log(particle.Name + " " + RegisteredParticles[particle.Name].ToString());
-    //        }
-    //    }
-    //}
-
 }
