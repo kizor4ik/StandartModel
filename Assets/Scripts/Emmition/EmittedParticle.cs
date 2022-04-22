@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EmittedParticle : MonoBehaviour
 {
+    [SerializeField] private PARTICLENAME _name;
     [SerializeField] private float _radius;
     [SerializeField] private float _initialSpeed;
     [SerializeField] private float _lifetime;
@@ -11,6 +12,10 @@ public class EmittedParticle : MonoBehaviour
     private Vector3 _direction;    
     private float _time=0;
     private bool _isEmmited = false;
+
+    //объявляем событие подбора частицы
+    public delegate void GrabParticleDelegate(PARTICLENAME name);
+    public static event GrabParticleDelegate GrabParticleEvent;
 
     private void Start()
     {
@@ -54,7 +59,7 @@ public class EmittedParticle : MonoBehaviour
 
     public void GrabEmittedParticle()
     {
-        Debug.Log("particle:" + this.transform.name + " grabed");
+        GrabParticleEvent(_name);
         this.gameObject.SetActive(false);
     }
 
