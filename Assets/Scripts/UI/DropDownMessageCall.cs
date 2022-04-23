@@ -20,6 +20,9 @@ public class DropDownMessageCall : MonoBehaviour
             _dictOfMessages.Add(message.ID, message);
         }
         _anim = gameObject.GetComponent<Animator>();
+
+        // Тестовая подписка на очередное детектрирования 10 частиц
+        StatisticHandler.BunchOfPositronDetectionEvent += DropMessage;
     }
 
     private void SetUpData(string id)
