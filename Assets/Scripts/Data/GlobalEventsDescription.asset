@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d02602a18be1644cae2965bf3921754, type: 3}
+  m_Name: GlobalEventsDescription
+  m_EditorClassIdentifier: 
+  _listOfGlobalEvents:
+  - ID: ElectronDiscovery
+    Icon: {fileID: 0}
+    DateTime: 18970000
+    Description: "During the 1880s and \u201990s scientists searched cathode rays
+      for the carrier of the electrical properties in matter. Their work culminated
+      in the discovery by English physicist J.J. Thomson of the electron in 1897."
+  - ID: PositronDiscovery
+    Icon: {fileID: 0}
+    DateTime: 19320909
+    Description: In 1932 Carl Anderson, a young professor at the California Institute
+      of Technology in the US, was studying showers of cosmic particles in a cloud
+      chamber and saw a track left by "something positively charged, and with the
+      same mass as an electron".
