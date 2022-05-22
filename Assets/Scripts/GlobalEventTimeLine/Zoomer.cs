@@ -12,13 +12,21 @@ public class Zoomer : MonoBehaviour
     private float _scaleFactor = 1;
     private Vector3 _initialScale;
 
+    private Vector3 _scaleVelocity = Vector3.zero;
+    private float _scaleSmoothTime = 0.3f;
+
     private void Start()
     {
         _initialScale = transform.localScale;
     }
     private void Update()
     {
-        Zoom(Input.GetAxis("Mouse ScrollWheel"));
+        float increment = Input.GetAxis("Mouse ScrollWheel");
+        if (increment != 0)
+        {
+            Zoom(increment);
+        }
+        
     }
     private void Zoom(float increment)
     {
@@ -26,4 +34,11 @@ public class Zoomer : MonoBehaviour
         _scaleFactor = Mathf.Clamp(_scaleFactor, _minScaleFactor, _maxScaleFactor);
         transform.localScale = _initialScale * _scaleFactor;
     }
+
+    public void FocusZoom()
+    {
+        transform.localScale = Vector3.SmoothDamp(transform.localScale, _initialScale, ref _scaleVelocity, _scaleSmoothTime);
+        _scaleFactor = Vector3.SqrMagnitude(transform.localScale)/Vector3.SqrMagnitude(_initialScale);
+    }
+    
 }

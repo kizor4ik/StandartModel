@@ -4,9 +4,14 @@ using UnityEngine;
 [System.Serializable]
 public class GlobalEvent 
 {
-    public string ID;
+    public GLOBAL_EVENT Name;
     public Sprite Icon;
     [Header("Date in format yyyymmdd")]
     public int DateTime;
     public string Description;
+}
+
+public enum GLOBAL_EVENT
+{
+    ElectronDiscovery, PositronDiscovery, TestPhotonDiscovery
 }

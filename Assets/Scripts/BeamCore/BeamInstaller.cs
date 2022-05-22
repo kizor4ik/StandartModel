@@ -5,7 +5,7 @@ using BayatGames.SaveGameFree;
 
 public class BeamInstaller : MonoBehaviour
 {
-    private const string INITIALBEAMS_KEY = "Initital Beams";
+    //private string INITIALBEAMS_KEY = SAVE_LOAD_KEYS.InitialBeams.ToString();//"Initital Beams";
     private InitialBeams _initialBeams = new InitialBeams();
     [SerializeField] private PARTICLENAME _leftBeamParticle;
     [SerializeField] private PARTICLENAME _rightBeamParticle;
@@ -130,13 +130,13 @@ public class BeamInstaller : MonoBehaviour
     {
         _initialBeams.LeftBeamParticle = _leftBeamParticle;
         _initialBeams.RightBeamParticle = _rightBeamParticle;
-        SaveGame.Save<InitialBeams>(INITIALBEAMS_KEY, _initialBeams);
+        SaveGame.Save<InitialBeams>(SAVE_LOAD_KEYS.InitialBeams.ToString(), _initialBeams);
     }
     private void Load()
     {
-        if (SaveGame.Exists(INITIALBEAMS_KEY))
+        if (SaveGame.Exists(SAVE_LOAD_KEYS.InitialBeams.ToString()))
         {
-            InitialBeams loadedData = SaveGame.Load<InitialBeams>(INITIALBEAMS_KEY, new InitialBeams());
+            InitialBeams loadedData = SaveGame.Load<InitialBeams>(SAVE_LOAD_KEYS.InitialBeams.ToString(), new InitialBeams());
             _leftBeamParticle = loadedData.LeftBeamParticle;
             _rightBeamParticle = loadedData.RightBeamParticle;
         }

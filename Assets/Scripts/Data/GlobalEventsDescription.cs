@@ -8,3 +8,4 @@ public class GlobalEventsDescription : ScriptableObject
     public List<GlobalEvent> ListOfGlobalEvents => _listOfGlobalEvents;
 }
 
+

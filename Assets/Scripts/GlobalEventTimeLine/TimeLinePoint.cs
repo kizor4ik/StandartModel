@@ -16,7 +16,7 @@ public class TimeLinePoint : MonoBehaviour
         _globalEvent = globalEvent;
         _icon.sprite = globalEvent.Icon;
         _description.text = globalEvent.Description;
-        _name.text = globalEvent.ID;
+        _name.text = globalEvent.Name.ToString();
         _dateTime.text = (globalEvent.DateTime / 10000).ToString();
     }
 
