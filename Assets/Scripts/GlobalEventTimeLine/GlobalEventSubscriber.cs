@@ -5,17 +5,18 @@ using UnityEngine;
 public class GlobalEventSubscriber 
 {
     private TimeLineConstructor _timeLineConstructor;
-    public GlobalEventSubscriber(TimeLineConstructor timeLineConstructor)
+    private StatisticHandler _statisticHandler;
+    public GlobalEventSubscriber(TimeLineConstructor timeLineConstructor, StatisticHandler statisticHandler)
     {
         _timeLineConstructor = timeLineConstructor;
-        // Ниже нужно подписаться на все мировые события
-        GlobalEventsQualifier.TestPhotonDiscoveryEvent += DetectEvent;
-        GlobalEventsQualifier.ElectronDiscoveryEvent += DetectEvent;
-        GlobalEventsQualifier.PositronDiscoveryEvent += DetectEvent;
+        _statisticHandler = statisticHandler;
+        // Подписчик мирового отображаемого события
+        GlobalEventsQualifier.GlobalEventTimeLineEvent += DetectEvent;
     }
 
     public void DetectEvent(GLOBAL_EVENT eventId)
     {
+        _statisticHandler.MakrGlobalEventCompletion(eventId);
         _timeLineConstructor.UpdateTimeLine(eventId);
     }
 }

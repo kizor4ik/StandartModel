@@ -19,6 +19,10 @@ MonoBehaviour:
     Description: "During the 1880s and \u201990s scientists searched cathode rays
       for the carrier of the electrical properties in matter. Their work culminated
       in the discovery by English physicist J.J. Thomson of the electron in 1897."
+    Message:
+      ID: ElectronDiscovery
+      Icon: {fileID: 21300000, guid: c0427f2d2fdae7f419ca5da9907c6399, type: 3}
+      Text: "\u0412\u044B \u043E\u0442\u043A\u0440\u044B\u043B\u0438 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043DX"
   - Name: 1
     Icon: {fileID: 0}
     DateTime: 19320909
@@ -26,6 +30,10 @@ MonoBehaviour:
       of Technology in the US, was studying showers of cosmic particles in a cloud
       chamber and saw a track left by "something positively charged, and with the
       same mass as an electron".
+    Message:
+      ID: PositronDiscovery
+      Icon: {fileID: 21300000, guid: 3d9af4b6b76942641950f080cff1097e, type: 3}
+      Text: "\u041E\u0442\u043A\u0440\u044B\u043B\u0438 \u043F\u043E\u0437\u0438\u0442\u0440\u043E\u043D"
   - Name: 2
     Icon: {fileID: 0}
     DateTime: 1000000
@@ -33,3 +41,7 @@ MonoBehaviour:
       \u043E\u0442\u043A\u0440\u044B\u0432\u0430\u0442\u044C\u0441\u044F \u043F\u0440\u0438
       \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0444\u043E\u0442\u043E\u043D\u0430
       \u0432 \u043F\u0435\u0440\u0432\u044B\u0439 \u0440\u0430\u0437"
+    Message:
+      ID: TestPhotonDiscovery
+      Icon: {fileID: 21300000, guid: 949add35cc4f02a4ea97ff182c95e301, type: 3}
+      Text: "\u041E\u0442\u043A\u0440\u044B\u043B\u0438 \u0444\u043E\u0442\u043E\u043D"

@@ -1023,6 +1023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 503b656245bdaa84b957f2fadc5034d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _statisticHandler: {fileID: 1957627663}
   _template: {fileID: 1405115384}
   _globalEventsDescription: {fileID: 11400000, guid: 3320453bf0e0b8d498d43864b6240eff,
     type: 2}
@@ -1062,7 +1063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &892892642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1167,6 +1168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d43effa775a324f94bf9c6b396c210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _statisticHandler: {fileID: 1957627663}
   _buttonsParent: {fileID: 1615587777}
   _particlesDescription: {fileID: 11400000, guid: bc3b2171dd8a3f34fb21f0451016e32c,
     type: 2}
@@ -1454,6 +1456,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _messageDescription: {fileID: 11400000, guid: f71f11f76a14e4a459578ec955cb0720,
+    type: 2}
+  _globalEventsDescription: {fileID: 11400000, guid: 3320453bf0e0b8d498d43864b6240eff,
     type: 2}
   _icon: {fileID: 994901430}
   _text: {fileID: 1383324045}
@@ -7664,6 +7668,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particlesDescription: {fileID: 11400000, guid: bc3b2171dd8a3f34fb21f0451016e32c,
+    type: 2}
+  _globalEventsDescription: {fileID: 11400000, guid: 3320453bf0e0b8d498d43864b6240eff,
     type: 2}
 --- !u!1 &1981573344
 GameObject:

@@ -1,5 +1,5 @@
 ﻿    public enum SAVE_LOAD_KEYS
     {
-        GameStats, InitialBeams, GlobalEventCompletion
+        GameStats, InitialBeams, GlobalEventCompletion, UIRefreshEventsCompletion
     }
 

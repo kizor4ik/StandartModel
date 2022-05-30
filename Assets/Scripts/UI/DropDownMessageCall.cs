@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DropDownMessageCall : MonoBehaviour
 {
     [SerializeField] private DropDownMessageDescription _messageDescription;
+    [SerializeField] private GlobalEventsDescription _globalEventsDescription;
     [SerializeField] private Image _icon;
     [SerializeField] private Text _text;
 
@@ -19,21 +20,30 @@ public class DropDownMessageCall : MonoBehaviour
         {
             _dictOfMessages.Add(message.ID, message);
         }
+        foreach (GlobalEvent globalEvent in _globalEventsDescription.ListOfGlobalEvents)
+        {
+            _dictOfMessages.Add(globalEvent.Message.ID, globalEvent.Message);
+        }
         _anim = gameObject.GetComponent<Animator>();
 
-        // Тестовая подписка на очередное детектрирования 10 частиц
-        StatisticHandler.BunchOfPositronDetectionEvent += DropMessage;
+        // Подписываемся на мировое событие
+        GlobalEventsQualifier.GlobalEventTimeLineEvent += DropMessage;
     }
 
-    private void SetUpData(string id)
+    private void SetUpData(DropDownMessage dropDownMessage)
     {
-        _icon.sprite = _dictOfMessages[id].Icon;
-        _text.text = _dictOfMessages[id].Text;
+        _icon.sprite = dropDownMessage.Icon;
+        _text.text = dropDownMessage.Text;
     }
 
     public void DropMessage(string id)
     {
-        SetUpData(id);
+        SetUpData(_dictOfMessages[id]);
+        _anim.SetTrigger("DropMessage");
+    }
+    public void DropMessage(GLOBAL_EVENT id)
+    {
+        SetUpData(_dictOfMessages[id.ToString()]);
         _anim.SetTrigger("DropMessage");
     }
 
@@ -44,7 +54,7 @@ public class DropDownMessageCall : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
 
-            DropMessage("1");
+            DropMessage("X");
         }
     }
 }

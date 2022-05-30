@@ -10,37 +10,37 @@ public class GlobalEventsQualifier
         _dataHandler = dataHandler;
     }
 
-    // Ниже описываются все мировые события для каждого GlobalEvent
-    // Возможно, стоит все переписать и сделать только одно событие, которое будет выкидывать разный ID
+
+    // Мировое событие, отображаемое на TimeLine
+    public delegate void GlobalEventTimeLineDelegate(GLOBAL_EVENT id);
+    public static event GlobalEventTimeLineDelegate GlobalEventTimeLineEvent;
 
 
-    // Тестовое мировое событие с ID "TestPhotonDiscovery"
-    public delegate void TestPhotonDiscoveryDelegate(GLOBAL_EVENT id);
-    public static event TestPhotonDiscoveryDelegate TestPhotonDiscoveryEvent;
-
-    // Тестовое мировое событие с ID "ElectronDiscovery"
-    public delegate void ElectronDiscoveryDelegate(GLOBAL_EVENT id);
-    public static event ElectronDiscoveryDelegate ElectronDiscoveryEvent;
-
-    // Тестовое мировое событие с ID "PositronDiscovery"
-    public delegate void PositronDiscoveryDelegate(GLOBAL_EVENT id);
-    public static event PositronDiscoveryDelegate PositronDiscoveryEvent;
-
-    public void CheckEvents()
+    // Для каждого GLOBAL_EVENT ниже, внутри описываются условия, при которых тригерится мировое событие
+    public void CheckEvents(PARTICLENAME changedParticle)
     {
-        if (_dataHandler.Stats.RegisteredParticles[PARTICLENAME.Photon] == 1)
+        if (changedParticle == PARTICLENAME.Photon)
         {
-            TestPhotonDiscoveryEvent(GLOBAL_EVENT.TestPhotonDiscovery);
+            if (_dataHandler.Stats.RegisteredParticles[PARTICLENAME.Photon] == 1)
+            {
+                GlobalEventTimeLineEvent(GLOBAL_EVENT.TestPhotonDiscovery);
+            }
         }
 
-        if (_dataHandler.Stats.RegisteredParticles[PARTICLENAME.Electron] == 1)
+        if (changedParticle == PARTICLENAME.Electron)
         {
-            ElectronDiscoveryEvent(GLOBAL_EVENT.ElectronDiscovery);
+            if (_dataHandler.Stats.RegisteredParticles[PARTICLENAME.Electron] == 1)
+            {
+                GlobalEventTimeLineEvent(GLOBAL_EVENT.ElectronDiscovery);
+            }
         }
 
-        if (_dataHandler.Stats.RegisteredParticles[PARTICLENAME.Positron] == 1)
+        if (changedParticle == PARTICLENAME.Positron)
         {
-            PositronDiscoveryEvent(GLOBAL_EVENT.PositronDiscovery);
+            if (_dataHandler.Stats.RegisteredParticles[PARTICLENAME.Positron] == 1)
+            {
+                GlobalEventTimeLineEvent(GLOBAL_EVENT.PositronDiscovery);
+            }
         }
     }
 }

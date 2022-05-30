@@ -9,6 +9,7 @@ public class GlobalEvent
     [Header("Date in format yyyymmdd")]
     public int DateTime;
     public string Description;
+    public DropDownMessage Message;
 }
 
 public enum GLOBAL_EVENT
