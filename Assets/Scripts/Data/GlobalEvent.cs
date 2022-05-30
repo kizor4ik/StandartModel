@@ -14,5 +14,5 @@ public class GlobalEvent
 
 public enum GLOBAL_EVENT
 {
-    ElectronDiscovery, PositronDiscovery, TestPhotonDiscovery
+    ElectronDiscovery, PositronDiscovery, TestPhotonDiscovery, SpinDiscovery
 }

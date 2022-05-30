@@ -5,5 +5,5 @@ using UnityEngine;
 public class InitialBeams 
 {
     public PARTICLENAME LeftBeamParticle = PARTICLENAME.Electron;
-    public PARTICLENAME RightBeamParticle=PARTICLENAME.Electron;
+    public PARTICLENAME RightBeamParticle = PARTICLENAME.Electron;
 }

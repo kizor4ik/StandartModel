@@ -21,3 +21,4 @@ public class ParticleDiscoveringEventSubscriber
         _particlePoolInstaller.RefreshUI(particleName);
     }
 }
+ 

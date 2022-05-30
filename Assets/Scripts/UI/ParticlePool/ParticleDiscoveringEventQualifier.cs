@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ParticleDiscoveringEventQualifier
-{ 
+{
     private StatisticHandler _dataHandler;
     public ParticleDiscoveringEventQualifier (StatisticHandler dataHandler)
     {
@@ -19,8 +19,7 @@ public class ParticleDiscoveringEventQualifier
     public void CheckEvents(GLOBAL_EVENT changedEvent)
     {
         if (changedEvent == GLOBAL_EVENT.TestPhotonDiscovery)
-        {
-            //ParticlePoolRefreshEvent(UIREFRESH_EVENT.TestPhotonDiscovery);  
+        { 
             ParticlePoolRefreshEvent(PARTICLENAME.Photon);
         }
     }

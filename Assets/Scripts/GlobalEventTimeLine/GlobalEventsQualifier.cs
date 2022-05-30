@@ -18,7 +18,7 @@ public class GlobalEventsQualifier
 
     // Для каждого GLOBAL_EVENT ниже, внутри описываются условия, при которых тригерится мировое событие
     public void CheckEvents(PARTICLENAME changedParticle)
-    {
+    { 
         if (changedParticle == PARTICLENAME.Photon)
         {
             if (_dataHandler.Stats.RegisteredParticles[PARTICLENAME.Photon] == 1)
@@ -41,6 +41,11 @@ public class GlobalEventsQualifier
             {
                 GlobalEventTimeLineEvent(GLOBAL_EVENT.PositronDiscovery);
             }
+        }
+
+        if (_dataHandler.Stats.RegisteredParticles[PARTICLENAME.Electron] + _dataHandler.Stats.RegisteredParticles[PARTICLENAME.Positron] > 10)
+        {
+            GlobalEventTimeLineEvent(GLOBAL_EVENT.SpinDiscovery);
         }
     }
 }
