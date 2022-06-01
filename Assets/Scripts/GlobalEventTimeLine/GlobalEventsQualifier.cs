@@ -9,8 +9,6 @@ public class GlobalEventsQualifier
     {
         _dataHandler = dataHandler;
     }
-
-
     // Мировое событие, отображаемое на TimeLine
     public delegate void GlobalEventTimeLineDelegate(GLOBAL_EVENT id);
     public static event GlobalEventTimeLineDelegate GlobalEventTimeLineEvent;
@@ -43,9 +41,12 @@ public class GlobalEventsQualifier
             }
         }
 
-        if (_dataHandler.Stats.RegisteredParticles[PARTICLENAME.Electron] + _dataHandler.Stats.RegisteredParticles[PARTICLENAME.Positron] > 10)
+        if (!_dataHandler.GlobalEventCompletion.IsEventCompleted[GLOBAL_EVENT.SpinDiscovery])
         {
-            GlobalEventTimeLineEvent(GLOBAL_EVENT.SpinDiscovery);
+            if (_dataHandler.Stats.RegisteredParticles[PARTICLENAME.Electron] + _dataHandler.Stats.RegisteredParticles[PARTICLENAME.Positron] > 10)
+            {
+                GlobalEventTimeLineEvent(GLOBAL_EVENT.SpinDiscovery);
+            }
         }
     }
 }

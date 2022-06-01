@@ -10,7 +10,10 @@ public class CameraAnimationLauncher : MonoBehaviour
         // подписываемся на событие, объвленное в другом классе
         BeamLauncher.BeamCollideEvent += BeamCollide;
     }
-
+    private void OnDestroy()
+    {
+        BeamLauncher.BeamCollideEvent -= BeamCollide;
+    }
     private void Update()
     {
 

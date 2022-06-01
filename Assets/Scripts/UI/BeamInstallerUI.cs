@@ -14,4 +14,8 @@ public class BeamInstallerUI : MonoBehaviour
         this.gameObject.GetComponent<UIEnabler>().Hide();
     }
 
+    private void OnDestroy()
+    {
+        BeamLauncher.BeamLaunchEvent -= LaunchBeamAction;
+    }
 }

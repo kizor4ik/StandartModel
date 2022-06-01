@@ -9,10 +9,14 @@ public class DropDownMessageCall : MonoBehaviour
     [SerializeField] private GlobalEventsDescription _globalEventsDescription;
     [SerializeField] private Image _icon;
     [SerializeField] private Text _text;
+    [SerializeField] TimeLineUIEnabler _timeLineCanvasEnabler;
+  
 
     private Animator _anim;
 
     private Dictionary<string, DropDownMessage> _dictOfMessages = new Dictionary<string, DropDownMessage>();
+
+    private GLOBAL_EVENT _lastDropedGlobalEvent;
 
     void Awake()
     {
@@ -44,9 +48,14 @@ public class DropDownMessageCall : MonoBehaviour
     public void DropMessage(GLOBAL_EVENT id)
     {
         SetUpData(_dictOfMessages[id.ToString()]);
+        _lastDropedGlobalEvent = id;
         _anim.SetTrigger("DropMessage");
     }
 
+    public void ShowTimeLine()
+    {
+        _timeLineCanvasEnabler.Show(_lastDropedGlobalEvent);
+    }
 
     // Test's
     private void Update()

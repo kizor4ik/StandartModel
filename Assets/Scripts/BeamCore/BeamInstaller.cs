@@ -44,7 +44,10 @@ public class BeamInstaller : MonoBehaviour
         // Подписываемся на изменения состава пучка
         ParticlePoolButton.ChooseParticleEvent += SetBeamParticle;
     }
-
+    private void OnDestroy()
+    {
+        ParticlePoolButton.ChooseParticleEvent -= SetBeamParticle;
+    }
     private void InstallRightBeam()
     {
         GameObject RightBeam = Instantiate(DictOfParticles[_rightBeamParticle].BeamPrefab, Vector3.zero, Quaternion.identity);

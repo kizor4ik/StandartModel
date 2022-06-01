@@ -11,11 +11,11 @@ public class TimeLineConstructor : MonoBehaviour
     [SerializeField] private Vector3 _placementPosition = Vector3.zero;
 
     private Dictionary<GLOBAL_EVENT, TimeLinePoint> _globalEventOnTimeLine = new Dictionary<GLOBAL_EVENT, TimeLinePoint>();
+    public Dictionary<GLOBAL_EVENT, TimeLinePoint> GlobalEventOnTimeLine => _globalEventOnTimeLine;
     private GlobalEventSubscriber _globalEventSubscriber;
 
     void Start()
     {
-   
         _globalEventSubscriber = new GlobalEventSubscriber(this, _statisticHandler);
         ConstructTimeLine();
     }
