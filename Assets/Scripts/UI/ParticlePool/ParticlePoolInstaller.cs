@@ -8,7 +8,6 @@ public class ParticlePoolInstaller : MonoBehaviour
     [SerializeField] private Transform _buttonsParent;
     [SerializeField] private ParticlesDescription _particlesDescription;
     [SerializeField] private GameObject _buttonPrefab;
-    private ParticleDiscoveringEventSubscriber _uiRefreshEventSubscriber;
 
     private void Start()
     {
@@ -24,13 +23,6 @@ public class ParticlePoolInstaller : MonoBehaviour
                 copy.SetActive(true);
             }
         }
-        _uiRefreshEventSubscriber = new ParticleDiscoveringEventSubscriber(_statisticHandler, this);
-        gameObject.SetActive(false);
     }
 
-    public void RefreshUI(PARTICLENAME particleName)
-    {
-        if (particleName==PARTICLENAME.Photon)
-        Debug.Log("We are refreshing photon button");
-    }
 }

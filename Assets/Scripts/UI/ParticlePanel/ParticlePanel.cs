@@ -24,6 +24,8 @@ public class ParticlePanel : MonoBehaviour
 
         // Подписываемся на изменения состава пучка
         ParticlePoolButton.ChooseParticleEvent += RefreshPanel;
+
+        gameObject.SetActive(false);
     }
 
     public void RefreshPanel(PARTICLENAME particleName)
@@ -35,6 +37,10 @@ public class ParticlePanel : MonoBehaviour
         if (_statisticHandler.GlobalEventCompletion.IsEventCompleted[GLOBAL_EVENT.SpinDiscovery])
         {
             _spin.text = string.Format("Spin: {0}", curParticle.Spin.ToString());
+        }
+        else
+        {
+            _spin.text = "";
         }
     }
 

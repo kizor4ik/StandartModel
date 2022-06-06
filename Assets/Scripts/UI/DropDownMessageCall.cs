@@ -66,4 +66,9 @@ public class DropDownMessageCall : MonoBehaviour
             DropMessage("X");
         }
     }
+
+    private void OnDestroy()
+    {
+        GlobalEventsQualifier.GlobalEventTimeLineEvent -= DropMessage;
+    }
 }

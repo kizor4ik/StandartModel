@@ -28,6 +28,8 @@ public class StatisticHandler : MonoBehaviour
         _globalEventsQualifier = new GlobalEventsQualifier(this);
         _particleDiscoveringQualifier = new ParticleDiscoveringEventQualifier(this);
         Load();
+        GlobalEventsQualifier.GlobalEventTimeLineEvent += MakrGlobalEventCompletion;
+        ParticleDiscoveringEventQualifier.ParticleDiscoveryEvent += MarkParticleDiscoveringCompletion;
     }
 
     public void AddParticleDetection(PARTICLENAME changedParticle)
@@ -35,7 +37,6 @@ public class StatisticHandler : MonoBehaviour
         _stats.RegisteredParticles[changedParticle]++;
         Debug.Log("Particle " + changedParticle + " grabbed! Total amount " + _stats.RegisteredParticles[changedParticle].ToString());
         Save();
-
          _globalEventsQualifier.CheckEvents(changedParticle);
     }
 
@@ -44,6 +45,7 @@ public class StatisticHandler : MonoBehaviour
         _globalEventCompletion.IsEventCompleted[eventId] = true;
         _particleDiscoveringQualifier.CheckEvents(eventId);
         Save();
+
     }
     public void MarkParticleDiscoveringCompletion(PARTICLENAME particleName)
     {
@@ -98,5 +100,10 @@ public class StatisticHandler : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        GlobalEventsQualifier.GlobalEventTimeLineEvent -= MakrGlobalEventCompletion;
+        ParticleDiscoveringEventQualifier.ParticleDiscoveryEvent -= MarkParticleDiscoveringCompletion;
+    }
 
 }

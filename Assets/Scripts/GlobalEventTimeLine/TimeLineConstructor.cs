@@ -12,11 +12,10 @@ public class TimeLineConstructor : MonoBehaviour
 
     private Dictionary<GLOBAL_EVENT, TimeLinePoint> _globalEventOnTimeLine = new Dictionary<GLOBAL_EVENT, TimeLinePoint>();
     public Dictionary<GLOBAL_EVENT, TimeLinePoint> GlobalEventOnTimeLine => _globalEventOnTimeLine;
-    private GlobalEventSubscriber _globalEventSubscriber;
 
     void Start()
     {
-        _globalEventSubscriber = new GlobalEventSubscriber(this, _statisticHandler);
+        GlobalEventsQualifier.GlobalEventTimeLineEvent += UpdateTimeLine;
         ConstructTimeLine();
     }
 
@@ -40,5 +39,9 @@ public class TimeLineConstructor : MonoBehaviour
     public void UpdateTimeLine(GLOBAL_EVENT id)
     {
         _globalEventOnTimeLine[id].transform.gameObject.SetActive(true);
+    }
+    public void OnDestroy()
+    {
+        GlobalEventsQualifier.GlobalEventTimeLineEvent -= UpdateTimeLine;
     }
 }

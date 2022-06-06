@@ -9,18 +9,17 @@ public class ParticleDiscoveringEventQualifier
     {
         _dataHandler = dataHandler;
     }
-
-
     // Событие, изменяющие UIParticlePool
-    public delegate void ParticlePoolRefreshDelegate(PARTICLENAME id);
-    public static event ParticlePoolRefreshDelegate ParticlePoolRefreshEvent;
+    public delegate void ParticleDiscoveryDelegate(PARTICLENAME id);
+    public static event ParticleDiscoveryDelegate ParticleDiscoveryEvent;
 
 
     public void CheckEvents(GLOBAL_EVENT changedEvent)
     {
         if (changedEvent == GLOBAL_EVENT.TestPhotonDiscovery)
         { 
-            ParticlePoolRefreshEvent(PARTICLENAME.Photon);
+            ParticleDiscoveryEvent(PARTICLENAME.Photon);
         }
     }
 }
+ 
