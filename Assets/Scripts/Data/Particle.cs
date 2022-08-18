@@ -26,5 +26,5 @@ public class Particle
 
 public enum PARTICLENAME
 {
-    Electron, Positron, Photon
+    Electron, Positron, Photon, ElectronNeutrino, AntiElectronNeutrino
 }

@@ -20,6 +20,17 @@ public class ParticleDiscoveringEventQualifier
         { 
             ParticleDiscoveryEvent(PARTICLENAME.Photon);
         }
+
+        if (changedEvent == GLOBAL_EVENT.ElectronNeutrinoDiscovery)
+        {
+            ParticleDiscoveryEvent(PARTICLENAME.ElectronNeutrino);
+        }
+
+        if (changedEvent == GLOBAL_EVENT.AntiElectronNeutrinoDiscovery)
+        {
+            ParticleDiscoveryEvent(PARTICLENAME.AntiElectronNeutrino);
+        }
+
     }
 }
  

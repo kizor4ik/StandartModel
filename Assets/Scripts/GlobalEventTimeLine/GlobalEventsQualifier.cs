@@ -48,5 +48,27 @@ public class GlobalEventsQualifier
                 GlobalEventTimeLineEvent(GLOBAL_EVENT.SpinDiscovery);
             }
         }
+
+        if (!_dataHandler.GlobalEventCompletion.IsEventCompleted[GLOBAL_EVENT.ElectronNeutrinoDiscovery])
+        {
+            GlobalEventTimeLineEvent(GLOBAL_EVENT.ElectronNeutrinoDiscovery);
+        }
+
+        if (!_dataHandler.GlobalEventCompletion.IsEventCompleted[GLOBAL_EVENT.WeinbergGlashowSalamModel])
+        {
+            if (_dataHandler.ParticleDiscoveringCompletion.IsEventCompleted[PARTICLENAME.ElectronNeutrino] && _dataHandler.ParticleDiscoveringCompletion.IsEventCompleted[PARTICLENAME.Photon])
+            {
+                GlobalEventTimeLineEvent(GLOBAL_EVENT.WeinbergGlashowSalamModel);
+            }
+        }
+
+        if (!_dataHandler.GlobalEventCompletion.IsEventCompleted[GLOBAL_EVENT.AntiElectronNeutrinoDiscovery])
+        {
+            Debug.Log(_dataHandler.Stats.RegisteredParticles[PARTICLENAME.ElectronNeutrino]);
+            if (_dataHandler.Stats.RegisteredParticles[PARTICLENAME.ElectronNeutrino]>5)
+            {
+                GlobalEventTimeLineEvent(GLOBAL_EVENT.AntiElectronNeutrinoDiscovery);
+            }
+        }
     }
 }

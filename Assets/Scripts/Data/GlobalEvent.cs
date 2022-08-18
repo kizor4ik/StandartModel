@@ -14,5 +14,6 @@ public class GlobalEvent
 
 public enum GLOBAL_EVENT
 {
-    ElectronDiscovery, PositronDiscovery, TestPhotonDiscovery, SpinDiscovery
+    ElectronDiscovery, PositronDiscovery, TestPhotonDiscovery, SpinDiscovery, ElectronNeutrinoDiscovery, AntiElectronNeutrinoDiscovery,
+    WeinbergGlashowSalamModel
 }

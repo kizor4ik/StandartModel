@@ -37,7 +37,35 @@ public class BeamInstaller : MonoBehaviour
         {
             DictOfProccesse.Add(proccess.Reagents.BeamOne.ToString() + proccess.Reagents.BeamTwo.ToString(), proccess);
         }
-
+        // Необязтаельный двойной цикл, чтобы заполнить пустые процессы без ошибки.
+        // Он не нужен, если все каналы распадов записать вручную
+        // Можно удалить в финальном билде, чтобы не жрал производительсность
+        //------------------
+        foreach (Particle particle1 in _particleDescription.ListOfParticles)
+        {
+            foreach (Particle particle2 in _particleDescription.ListOfParticles)
+            {
+                if (DictOfProccesse.ContainsKey(particle1.Name.ToString() + particle2.Name.ToString()) || DictOfProccesse.ContainsKey(particle2.Name.ToString() + particle1.Name.ToString()))
+                {
+                    continue;
+                }
+                else
+                {
+                    ScatteringProccess emptyProccess = new ScatteringProccess();
+                    Channel emptyChannel = new Channel();
+                    emptyChannel.ProbabilityOfChannel = 1;
+                    emptyChannel.RadiatedParticles = new List<PARTICLENAME>();
+                    emptyChannel.RadiatedParticles.Add(particle1.Name);
+                    emptyChannel.RadiatedParticles.Add(particle2.Name);
+                    emptyProccess.Reagents = new Reagents(particle1.Name,particle2.Name);
+                    emptyProccess.Channels = new List<Channel>();
+                    emptyProccess.Channels.Add(emptyChannel);
+                    DictOfProccesse.Add(particle1.Name.ToString() + particle2.Name.ToString(), emptyProccess);
+                   // Debug.Log(particle1.Name.ToString() + particle2.Name.ToString() + " Does not Exists");
+                }
+            }
+        }
+        //------------------------------
         Load();
         InstallParticleConfiguration();
 
