@@ -15,6 +15,15 @@ MonoBehaviour:
   _listOfParticles:
   - Name: 0
     Spin: 1/2
+    Statistic: 
+    Family: 
+    Mass: 
+    MeanLifetime: 
+    Antiparticle: 
+    ElectrigCharge: 
+    ColorCharge: none
+    BarionNumber: none
+    LeptonNumber: none
     BeamPrefab: {fileID: 6524102898664054363, guid: e2b5e29bdd6748c44bd9b647e53cb9b0,
       type: 3}
     EmittedParticlePrefab: {fileID: 708132628373276244, guid: df1ef27dc2cdf6d499ca1fd48e976be6,
@@ -22,6 +31,15 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: c0427f2d2fdae7f419ca5da9907c6399, type: 3}
   - Name: 1
     Spin: 1/2
+    Statistic: 
+    Family: 
+    Mass: 
+    MeanLifetime: 
+    Antiparticle: 
+    ElectrigCharge: 
+    ColorCharge: none
+    BarionNumber: none
+    LeptonNumber: none
     BeamPrefab: {fileID: 4444669238809060294, guid: 35f755a12be1704458deff7b96ee9ad1,
       type: 3}
     EmittedParticlePrefab: {fileID: 2139582849829608118, guid: 08644eaab58367546b5f186632c4f2f1,
@@ -29,6 +47,15 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: 3d9af4b6b76942641950f080cff1097e, type: 3}
   - Name: 2
     Spin: 1
+    Statistic: Bosonic
+    Family: Gauge boson
+    Mass: 0
+    MeanLifetime: Stable
+    Antiparticle: Photon
+    ElectrigCharge: 0
+    ColorCharge: 0
+    BarionNumber: none
+    LeptonNumber: none
     BeamPrefab: {fileID: 7004632388673686569, guid: f3c0b92da7be256428afdfdfbba0b33e,
       type: 3}
     EmittedParticlePrefab: {fileID: 1914068005078244452, guid: 5de3ae9c48d686a4ca68c86e948f29cc,
